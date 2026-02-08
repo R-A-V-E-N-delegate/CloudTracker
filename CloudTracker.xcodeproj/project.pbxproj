@@ -17,6 +17,10 @@
 		A1000008238F0001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000018238F0001 /* Assets.xcassets */; };
 		A1000009238F0001 /* SampleCloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001A238F0001 /* SampleCloudService.swift */; };
 		A100000A238F0001 /* CloudTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001B238F0001 /* CloudTheme.swift */; };
+		A100000B238F0001 /* cumulus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A100001C238F0001 /* cumulus.jpg */; };
+		A100000C238F0001 /* cirrus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A100001D238F0001 /* cirrus.jpg */; };
+		A100000D238F0001 /* stratus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A100001E238F0001 /* stratus.jpg */; };
+		A100000E238F0001 /* cumulonimbus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A100001F238F0001 /* cumulonimbus.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		A1000019238F0001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A100001A238F0001 /* SampleCloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCloudService.swift; sourceTree = "<group>"; };
 		A100001B238F0001 /* CloudTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudTheme.swift; sourceTree = "<group>"; };
+		A100001C238F0001 /* cumulus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cumulus.jpg; sourceTree = "<group>"; };
+		A100001D238F0001 /* cirrus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cirrus.jpg; sourceTree = "<group>"; };
+		A100001E238F0001 /* stratus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stratus.jpg; sourceTree = "<group>"; };
+		A100001F238F0001 /* cumulonimbus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cumulonimbus.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +69,7 @@
 				A1000034238F0001 /* Views */,
 				A1000035238F0001 /* Services */,
 				A1000036238F0001 /* Theme */,
+				A1000037238F0001 /* Resources */,
 				A1000018238F0001 /* Assets.xcassets */,
 				A1000019238F0001 /* Info.plist */,
 			);
@@ -109,6 +118,17 @@
 				A100001B238F0001 /* CloudTheme.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		A1000037238F0001 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A100001C238F0001 /* cumulus.jpg */,
+				A100001D238F0001 /* cirrus.jpg */,
+				A100001E238F0001 /* stratus.jpg */,
+				A100001F238F0001 /* cumulonimbus.jpg */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +190,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1000008238F0001 /* Assets.xcassets in Resources */,
+				A100000B238F0001 /* cumulus.jpg in Resources */,
+				A100000C238F0001 /* cirrus.jpg in Resources */,
+				A100000D238F0001 /* stratus.jpg in Resources */,
+				A100000E238F0001 /* cumulonimbus.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
