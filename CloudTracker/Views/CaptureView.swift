@@ -18,36 +18,60 @@ struct CaptureView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 32) {
-                Spacer()
+            ZStack {
+                // Background
+                CloudTheme.backgroundGradient
+                    .ignoresSafeArea()
 
-                // Header
-                VStack(spacing: 12) {
-                    Image(systemName: "cloud.sun.fill")
-                        .font(.system(size: 80))
-                        .foregroundStyle(Color.skyBlue)
+                VStack(spacing: 32) {
+                    Spacer()
 
-                    Text("Capture a Cloud")
-                        .font(.title)
-                        .fontWeight(.bold)
+                    // Header with floating cloud effect
+                    VStack(spacing: 16) {
+                        ZStack {
+                            // Decorative circles
+                            Circle()
+                                .fill(CloudTheme.accent.opacity(0.08))
+                                .frame(width: 200, height: 200)
+                                .offset(x: -20, y: 10)
 
-                    Text("Take a photo or choose from your library\nto identify the cloud type")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
+                            Circle()
+                                .fill(CloudTheme.accentSecondary.opacity(0.08))
+                                .frame(width: 160, height: 160)
+                                .offset(x: 30, y: -20)
+
+                            Image(systemName: "cloud.sun.fill")
+                                .font(.system(size: 80))
+                                .foregroundStyle(CloudTheme.accent, CloudTheme.accentSecondary)
+                                .shadow(color: CloudTheme.accent.opacity(0.3), radius: 20, x: 0, y: 10)
+                        }
+
+                        Text("Capture a Cloud")
+                            .font(.title)
+                            .fontWeight(.bold)
+
+                        Text("Take a photo or choose from your library\nto identify the cloud type")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+
+                    Spacer()
+
+                    if isProcessing {
+                        processingView
+                    } else {
+                        captureButtonsView
+                    }
+
+                    Spacer()
+
+                    // Bottom padding for tab bar
+                    Spacer()
+                        .frame(height: 60)
                 }
-
-                Spacer()
-
-                if isProcessing {
-                    processingView
-                } else {
-                    captureButtonsView
-                }
-
-                Spacer()
+                .padding()
             }
-            .padding()
             .navigationTitle("Capture")
             .fullScreenCover(isPresented: $showCamera) {
                 CameraView(image: $capturedImage)
@@ -87,33 +111,34 @@ struct CaptureView: View {
                 showCamera = true
             } label: {
                 Label("Take Photo", systemImage: "camera.fill")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 56)
-                    .background(Color.skyBlue)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
             }
+            .buttonStyle(CloudButtonStyle(isPrimary: true))
 
             // Photo picker
             PhotosPicker(selection: $selectedItem, matching: .images) {
                 Label("Choose from Library", systemImage: "photo.on.rectangle")
                     .font(.headline)
-                    .foregroundStyle(Color.skyBlue)
+                    .foregroundStyle(CloudTheme.accent)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
-                    .background(Color.skyBlue.opacity(0.15))
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .background(CloudTheme.accent.opacity(0.12))
+                    .clipShape(RoundedRectangle(cornerRadius: CloudTheme.cornerRadiusMedium, style: .continuous))
             }
         }
         .padding(.horizontal, 24)
     }
 
     private var processingView: some View {
-        VStack(spacing: 20) {
-            ProgressView()
-                .scaleEffect(1.5)
-                .tint(Color.skyBlue)
+        VStack(spacing: 24) {
+            ZStack {
+                Circle()
+                    .fill(CloudTheme.accent.opacity(0.1))
+                    .frame(width: 100, height: 100)
+
+                ProgressView()
+                    .scaleEffect(1.5)
+                    .tint(CloudTheme.accent)
+            }
 
             Text(processingStatus)
                 .font(.subheadline)

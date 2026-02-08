@@ -13,7 +13,7 @@ struct CloudDetailView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 24) {
+                VStack(spacing: 20) {
                     // Cloud Image
                     cloudImageSection
 
@@ -30,10 +30,14 @@ struct CloudDetailView: View {
                     if !isNewCapture {
                         deleteButton
                     }
+
+                    Spacer()
+                        .frame(height: 20)
                 }
-                .padding()
+                .padding(.horizontal)
+                .padding(.top, 8)
             }
-            .background(Color(.systemGroupedBackground))
+            .dreamyBackground()
             .navigationTitle(isNewCapture ? "Cloud Identified!" : "Cloud Details")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -42,6 +46,7 @@ struct CloudDetailView: View {
                         dismiss()
                     }
                     .fontWeight(.semibold)
+                    .foregroundStyle(CloudTheme.accent)
                 }
             }
             .confirmationDialog(
@@ -70,8 +75,8 @@ struct CloudDetailView: View {
                     .frame(maxWidth: .infinity)
                     .frame(height: 280)
                     .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 5)
+                    .clipShape(RoundedRectangle(cornerRadius: CloudTheme.cornerRadiusLarge, style: .continuous))
+                    .shadow(color: CloudTheme.shadowColor, radius: CloudTheme.shadowRadiusMedium, x: 0, y: CloudTheme.shadowYOffset)
             }
         }
     }
@@ -81,27 +86,36 @@ struct CloudDetailView: View {
             .font(.title2)
             .fontWeight(.bold)
             .foregroundStyle(.white)
-            .padding(.horizontal, 24)
-            .padding(.vertical, 12)
-            .background(Color.skyBlue)
-            .clipShape(Capsule())
+            .padding(.horizontal, 28)
+            .padding(.vertical, 14)
+            .background(
+                Capsule()
+                    .fill(CloudTheme.accentGradient)
+                    .shadow(color: CloudTheme.accent.opacity(0.4), radius: 12, x: 0, y: 6)
+            )
     }
 
     private var descriptionSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label("Description", systemImage: "text.alignleft")
-                .font(.headline)
-                .foregroundStyle(.secondary)
+            HStack(spacing: 8) {
+                Image(systemName: "text.alignleft")
+                    .foregroundStyle(CloudTheme.accent)
+                Text("Description")
+                    .font(.headline)
+                    .foregroundStyle(.secondary)
+            }
 
             Text(cloud.cloudDescription)
                 .font(.body)
                 .foregroundStyle(.primary)
                 .fixedSize(horizontal: false, vertical: true)
+                .lineSpacing(4)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color(.systemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .padding(18)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: CloudTheme.cornerRadiusMedium, style: .continuous))
+        .shadow(color: CloudTheme.shadowColor, radius: CloudTheme.shadowRadiusSoft, x: 0, y: CloudTheme.shadowYOffset)
     }
 
     private var detailsSection: some View {
@@ -114,7 +128,7 @@ struct CloudDetailView: View {
             )
 
             Divider()
-                .padding(.leading, 52)
+                .padding(.leading, 56)
 
             // Location
             DetailRow(
@@ -125,7 +139,7 @@ struct CloudDetailView: View {
 
             if cloud.hasLocation {
                 Divider()
-                    .padding(.leading, 52)
+                    .padding(.leading, 56)
 
                 // Coordinates
                 DetailRow(
@@ -135,8 +149,9 @@ struct CloudDetailView: View {
                 )
             }
         }
-        .background(Color(.systemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: CloudTheme.cornerRadiusMedium, style: .continuous))
+        .shadow(color: CloudTheme.shadowColor, radius: CloudTheme.shadowRadiusSoft, x: 0, y: CloudTheme.shadowYOffset)
     }
 
     private var deleteButton: some View {
@@ -148,8 +163,8 @@ struct CloudDetailView: View {
                 .foregroundStyle(.red)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
-                .background(Color.red.opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .background(Color.red.opacity(0.08))
+                .clipShape(RoundedRectangle(cornerRadius: CloudTheme.cornerRadiusMedium, style: .continuous))
         }
         .padding(.top, 8)
     }
@@ -172,24 +187,31 @@ struct DetailRow: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            Image(systemName: icon)
-                .font(.title3)
-                .foregroundStyle(Color.skyBlue)
-                .frame(width: 28)
+            ZStack {
+                Circle()
+                    .fill(CloudTheme.accent.opacity(0.12))
+                    .frame(width: 36, height: 36)
 
-            VStack(alignment: .leading, spacing: 2) {
+                Image(systemName: icon)
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundStyle(CloudTheme.accent)
+            }
+
+            VStack(alignment: .leading, spacing: 3) {
                 Text(title)
                     .font(.caption)
                     .foregroundStyle(.secondary)
 
                 Text(value)
                     .font(.subheadline)
+                    .fontWeight(.medium)
                     .foregroundStyle(.primary)
             }
 
             Spacer()
         }
-        .padding()
+        .padding(.horizontal, 16)
+        .padding(.vertical, 14)
     }
 }
 

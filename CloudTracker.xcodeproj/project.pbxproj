@@ -15,6 +15,8 @@
 		A1000006238F0001 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000016238F0001 /* OpenAIService.swift */; };
 		A1000007238F0001 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000017238F0001 /* LocationService.swift */; };
 		A1000008238F0001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000018238F0001 /* Assets.xcassets */; };
+		A1000009238F0001 /* SampleCloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001A238F0001 /* SampleCloudService.swift */; };
+		A100000A238F0001 /* CloudTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100001B238F0001 /* CloudTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		A1000017238F0001 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		A1000018238F0001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1000019238F0001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A100001A238F0001 /* SampleCloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCloudService.swift; sourceTree = "<group>"; };
+		A100001B238F0001 /* CloudTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 				A1000033238F0001 /* Models */,
 				A1000034238F0001 /* Views */,
 				A1000035238F0001 /* Services */,
+				A1000036238F0001 /* Theme */,
 				A1000018238F0001 /* Assets.xcassets */,
 				A1000019238F0001 /* Info.plist */,
 			);
@@ -93,8 +98,17 @@
 			children = (
 				A1000016238F0001 /* OpenAIService.swift */,
 				A1000017238F0001 /* LocationService.swift */,
+				A100001A238F0001 /* SampleCloudService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		A1000036238F0001 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				A100001B238F0001 /* CloudTheme.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +187,8 @@
 				A1000005238F0001 /* CloudDetailView.swift in Sources */,
 				A1000006238F0001 /* OpenAIService.swift in Sources */,
 				A1000007238F0001 /* LocationService.swift in Sources */,
+				A1000009238F0001 /* SampleCloudService.swift in Sources */,
+				A100000A238F0001 /* CloudTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

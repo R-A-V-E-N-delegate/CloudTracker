@@ -1,0 +1,34 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xcworkspace
+!default.xcworkspace
+
+# Swift Package Manager
+.build/
+Packages/
+
+# CocoaPods
+Pods/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+# OS
+.DS_Store
+*.swp
+*~.nib
+
+# Code injection
+.injection*
+
+# User-specific files
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
